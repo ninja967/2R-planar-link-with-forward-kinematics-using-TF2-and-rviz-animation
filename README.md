@@ -80,6 +80,19 @@ The robot was redesigned in **SolidWorks 2022 SP1.0** to ensure valid single sol
 
 ---
 
+## 🔬 Individual Part Designs & Engineering Specifications
+
+Every component is available in both **SolidWorks native format (`.SLDPRT`)** and **neutral CAD exchange format (`.STEP`)**:
+
+| Part Design | Dimensions & Features | CAD Files |
+| :---: | :--- | :---: |
+| <img src="cad/base.png" alt="Base Part" width="220"/> | **Base Bedplate & Bearing Column**<br>• $240 \times 240\text{ mm}$ bedplate with 4x M10 holes on $\pm 95\text{ mm}$ pattern<br>• $\varnothing 140\text{ mm}$ pedestal column, height $75\text{ mm}$<br>• $\varnothing 160\text{ mm}$ bearing flange, 8-bolt circle on $\varnothing 130\text{ mm}$ PCD<br>• Mass: $1.7348\text{ kg}$, $Z$-elevation: $0.085\text{ m}$ | [`base.SLDPRT`](cad/base.SLDPRT)<br>[`base.STEP`](cad/base.STEP) |
+| <img src="cad/link1.png" alt="Link 1 Part" width="220"/> | **Link 1 Arm ($L_1 = 0.500\text{ m}$)**<br>• Center-to-center reach: $500\text{ mm}$ along $+X$<br>• $\varnothing 130\text{ mm}$ shoulder hub with 6-bolt circle on $\varnothing 95\text{ mm}$ PCD<br>• $\varnothing 110\text{ mm}$ elbow hub with 4x NEMA 23 mounting pattern<br>• Tapered structural web ($70\to 54\text{ mm}$) with dual weight pockets<br>• Mass: $1.0908\text{ kg}$, Thickness: $32\text{ mm}$ | [`link1.SLDPRT`](cad/link1.SLDPRT)<br>[`link1.STEP`](cad/link1.STEP) |
+| <img src="cad/link2.png" alt="Link 2 Part" width="220"/> | **Link 2 Forearm ($L_2 = 0.300\text{ m}$)**<br>• Center-to-center reach: $300\text{ mm}$ along $+X$<br>• $\varnothing 100\text{ mm}$ elbow pivot hub with 6-bolt circle on $\varnothing 70\text{ mm}$ PCD<br>• $\varnothing 70\text{ mm}$ wrist mount with 4x M5 pattern + $\varnothing 4\text{ mm}$ dowel pin<br>• Tapered structural web with dual weight reduction pockets<br>• Mass: $0.3811\text{ kg}$, Thickness: $28\text{ mm}$ | [`link2.SLDPRT`](cad/link2.SLDPRT)<br>[`link2.STEP`](cad/link2.STEP) |
+| <img src="cad/toollink.png" alt="Tool Link Part" width="220"/> | **Tool Link (Inspection End-Effector)**<br>• Rigidly fixed inspection probe/camera nozzle<br>• $\varnothing 70\text{ mm}$ mounting flange (4x M5 on $\varnothing 45\text{ mm}$ PCD)<br>• $\varnothing 44\text{ mm}$ sensor enclosure body (length $35\text{ mm}$)<br>• $\varnothing 24\text{ mm}$ optical objective lens barrel (length $20\text{ mm}$)<br>• Mass: $0.0732\text{ kg}$, Total Length: $65\text{ mm}$ | [`toollink.SLDPRT`](cad/toollink.SLDPRT)<br>[`toollink.STEP`](cad/toollink.STEP) |
+
+---
+
 ## 📦 Repository Structure
 
 ```
@@ -89,12 +102,21 @@ The robot was redesigned in **SolidWorks 2022 SP1.0** to ensure valid single sol
 ├── setup.cfg                              # Python script install directory mappings
 ├── README.md                              # Complete engineering documentation
 ├── preview.png                            # High-resolution rendered CAD preview
-├── base.SLDPRT                            # SolidWorks 2022 Base Part
-├── link1.SLDPRT                           # SolidWorks 2022 Link 1 Part (L1 = 0.500 m)
-├── link2.SLDPRT                           # SolidWorks 2022 Link 2 Part (L2 = 0.300 m)
-├── toollink.SLDPRT                        # SolidWorks 2022 Inspection Tool Part
-├── twoplanar_arm.SLDASM                   # SolidWorks 2022 Full Assembly (7 Mates)
-├── twoplanar_arm.STEP                     # Neutral CAD exchange model (AP214)
+├── cad/                                   # Dedicated CAD Designs Directory
+│   ├── base.SLDPRT                        # Base Part (SolidWorks 2022)
+│   ├── base.STEP                          # Base Part (Neutral STEP AP214)
+│   ├── base.png                           # Base Part 3D Render
+│   ├── link1.SLDPRT                       # Link 1 Arm (L1 = 0.500 m)
+│   ├── link1.STEP                         # Link 1 Arm (Neutral STEP AP214)
+│   ├── link1.png                          # Link 1 Arm 3D Render
+│   ├── link2.SLDPRT                       # Link 2 Forearm (L2 = 0.300 m)
+│   ├── link2.STEP                         # Link 2 Forearm (Neutral STEP AP214)
+│   ├── link2.png                          # Link 2 Forearm 3D Render
+│   ├── toollink.SLDPRT                    # Tool Link Inspection Sensor
+│   ├── toollink.STEP                      # Tool Link (Neutral STEP AP214)
+│   ├── toollink.png                       # Tool Link 3D Render
+│   ├── twoplanar_arm.SLDASM               # Full Robot Assembly (7 Mates)
+│   └── twoplanar_arm.STEP                 # Full Assembly (Neutral STEP AP214)
 ├── config/
 │   └── joint_names_twoplanar_arm.yaml     # Joint controller naming map
 ├── launch/
