@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Sine-Wave Joint State Publisher (20 Hz)
-Project 16: Two-link planar inspection arm and forward kinematics
+Two-link planar inspection arm and forward kinematics
 
 Publishes continuous sinusoidal joint trajectories to /joint_states at 20 Hz.
 Maintains joint positions strictly within revolute limits [-pi, +pi].

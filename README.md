@@ -5,7 +5,7 @@
 [![CAD: SolidWorks 2022](https://img.shields.io/badge/CAD-SolidWorks_2022-red.svg)](https://www.solidworks.com/)
 [![Kinematics: 3/3 Passed](https://img.shields.io/badge/FK_Verification-100%25_Passed-brightgreen.svg)]()
 
-> **Student Project 16 Brief**: *Two-link planar inspection arm and forward kinematics.*  
+> **Two-Link Planar Inspection Arm with Forward Kinematics**  
 > Complete implementation combining high-fidelity **SolidWorks 2022 CAD modeling**, URDF robot definition, continuous 20 Hz sinusoidal joint state animation, and automated TF2 transform verification against analytic forward kinematics.
 
 ---
@@ -16,7 +16,7 @@ The robotic system is a **2-degree-of-freedom (2R) planar inspection arm** opera
 
 ![2R Planar Inspection Arm Preview](preview.png)
 
-### Key Kinematic Dimensions (Project 16 Requirements)
+### Key Kinematic Dimensions & Design Parameters
 * **Link 1 Length ($L_1$)**: $0.500\text{ m}$ (Shoulder pivot to elbow pivot)
 * **Link 2 Length ($L_2$)**: $0.300\text{ m}$ (Elbow pivot to wrist/tool interface)
 * **Joint 1 (Shoulder)**: Revolute about **$Z$-axis** (`axis xyz="0 0 1"`), limits $[-\pi, +\pi]$
@@ -39,7 +39,7 @@ z_{EE} &= z_{\text{base}} + z_{\text{joint1}} + z_{\text{joint2}} + z_{\text{joi
 
 ### Acceptance Criteria & Verification Results
 
-The course brief requires validating end-effector coordinates across three mandatory configurations with TF tolerance $< 1\times 10^{-6}\text{ m}$:
+The end-effector coordinates are validated across three key test configurations with TF tolerance $< 1\times 10^{-6}\text{ m}$:
 
 | Test Case | Joint Angles $(q_1, q_2)$ | Expected $(X, Y)$ | Calculated FK $(X, Y)$ | Observed TF2 $(X, Y)$ | Numerical Error | Status |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |

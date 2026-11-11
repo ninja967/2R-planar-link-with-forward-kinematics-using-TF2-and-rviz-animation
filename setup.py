@@ -21,7 +21,7 @@ setup(
     zip_safe=True,
     maintainer='Sarat',
     maintainer_email='sarat@email.com',
-    description='Two-link planar inspection arm with forward kinematics, TF2, and RViz animation (Project 16)',
+    description='Two-link planar inspection arm with forward kinematics, TF2, and RViz animation',
     license='BSD-3-Clause',
     tests_require=['pytest'],
     entry_points={

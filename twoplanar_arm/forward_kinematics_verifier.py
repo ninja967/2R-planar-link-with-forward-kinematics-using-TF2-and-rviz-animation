@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 Forward Kinematics & TF2 Verifier
-Project 16: Two-link planar inspection arm and forward kinematics
+Two-link planar inspection arm and forward kinematics
 
 Subscribes to TF2 (base_link -> tool_link), verifies against analytic forward kinematics,
-tests the 3 mandatory acceptance configurations within 1e-6 m tolerance, and validates
+tests the 3 acceptance configurations within 1e-6 m tolerance, and validates
 missing joint state boundary failure handling.
 """
 
@@ -18,11 +18,11 @@ from tf2_ros import Buffer, TransformListener, TransformException
 from sensor_msgs.msg import JointState
 
 
-# Kinematic parameters (P16 Course Specification)
+# Kinematic parameters
 L1 = 0.500  # meters
 L2 = 0.300  # meters
 Z_OFFSET = 0.085 + 0.032 + 0.024  # Total elevation in Z = 0.141 m
-TOLERANCE = 1e-6  # meters (Course requirement: within 1e-6 m)
+TOLERANCE = 1e-6  # meters
 
 
 def analytic_fk(q1, q2):
@@ -43,7 +43,7 @@ class ForwardKinematicsVerifier(Node):
         
         self.joint_pub = self.create_publisher(JointState, '/joint_states', 10)
         
-        # Mandatory Course Acceptance Test Cases
+        # Acceptance Test Cases
         self.test_cases = [
             {'name': 'Case 1: (q1=0, q2=0)',        'q1': 0.0,         'q2': 0.0,         'exp_x': 0.8, 'exp_y': 0.0},
             {'name': 'Case 2: (q1=pi/2, q2=0)',     'q1': math.pi / 2, 'q2': 0.0,         'exp_x': 0.0, 'exp_y': 0.8},
@@ -139,7 +139,7 @@ class ForwardKinematicsVerifier(Node):
         self.test_missing_joint_state_boundary()
         
         print('\n' + '=' * 80)
-        print('PROJECT 16: EXPECTED VERSUS OBSERVED FORWARD KINEMATICS TABLE')
+        print('EXPECTED VERSUS OBSERVED FORWARD KINEMATICS TABLE')
         print('=' * 80)
         print(f"{'Test Case':<26} | {'Expected (X, Y)':<18} | {'Observed TF (X, Y)':<22} | {'Error (m)':<12} | {'Status'}")
         print('-' * 80)

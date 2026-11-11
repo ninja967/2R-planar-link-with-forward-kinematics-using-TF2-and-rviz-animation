@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Standalone Forward Kinematics Test Script
-Project 16: Two-link planar inspection arm and forward kinematics
+Two-link planar inspection arm and forward kinematics
 
 Can be executed without ROS 2 to mathematically and structurally verify:
 1. Analytical Forward Kinematics against course acceptance points
@@ -13,7 +13,7 @@ import math
 import os
 import xml.etree.ElementTree as ET
 
-# Kinematic parameters (P16 Course Specification)
+# Kinematic parameters
 L1 = 0.500  # meters
 L2 = 0.300  # meters
 TOLERANCE = 1e-6  # meters
@@ -28,7 +28,7 @@ def forward_kinematics(q1, q2):
 
 def run_tests():
     print("=" * 80)
-    print("PROJECT 16: STANDALONE FORWARD KINEMATICS VERIFICATION")
+    print("2R PLANAR LINK FORWARD KINEMATICS VERIFICATION")
     print(f"Parameters: L1 = {L1:.3f} m, L2 = {L2:.3f} m, Tolerance = {TOLERANCE:.1e} m")
     print("=" * 80)
 

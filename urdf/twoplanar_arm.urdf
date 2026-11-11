@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- =================================================================================== -->
-<!-- |    PROJECT 16: Two-link planar inspection arm and forward kinematics             | -->
+<!-- |    Two-link planar inspection arm and forward kinematics                         | -->
 <!-- |    Kinematic specification: L1 = 0.500 m, L2 = 0.300 m                            | -->
 <!-- |    Revolute joints rotate about Z-axis with limits +/- pi                         | -->
 <!-- |    Tool link is rigidly fixed to link2 (type="fixed")                             | -->

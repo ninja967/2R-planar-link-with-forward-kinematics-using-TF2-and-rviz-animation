@@ -4,7 +4,7 @@
   <name>twoplanar_arm</name>
   <version>2.0.0</version>
   <description>
-    Project 16: Two-link planar inspection arm with forward kinematics, TF2 transform lookups, and RViz animation.
+    Two-link planar inspection arm with forward kinematics, TF2 transform lookups, and RViz animation.
     Engineered 2R planar manipulator with SolidWorks CAD models, revolute joints rotating about the Z-axis,
     continuous solid body mechanics, and a rigidly fixed inspection tool end-effector.
   </description>
