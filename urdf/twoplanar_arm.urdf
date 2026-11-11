@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- =================================================================================== -->
+<!-- |    PROJECT 16: Two-link planar inspection arm and forward kinematics             | -->
+<!-- |    Kinematic specification: L1 = 0.500 m, L2 = 0.300 m                            | -->
+<!-- |    Revolute joints rotate about Z-axis with limits +/- pi                         | -->
+<!-- |    Tool link is rigidly fixed to link2 (type="fixed")                             | -->
+<!-- =================================================================================== -->
+<robot name="twoplanar_arm">
+
+  <!-- ======================== BASE LINK ======================== -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0262" rpy="0 0 0" />
+      <mass value="1.7348" />
+      <inertia
+        ixx="0.007405" ixy="0.0" ixz="0.0"
+        iyy="0.007405" iyz="0.0"
+        izz="0.010702" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/base_link.STL" />
+      </geometry>
+      <material name="dark_slate_gray">
+        <color rgba="0.22 0.25 0.28 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ======================== JOINT 1 (Shoulder) ======================== -->
+  <!-- Revolute joint at base rotating about Z-axis (limits +/- pi) -->
+  <joint name="joint1" type="revolute">
+    <origin xyz="0.0 0.0 0.085" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="50.0" velocity="3.14159" />
+    <dynamics damping="0.1" friction="0.05" />
+  </joint>
+
+  <!-- ======================== LINK 1 (Arm Reach L1 = 0.500 m) ======================== -->
+  <link name="link1">
+    <inertial>
+      <origin xyz="0.2222 0.0 0.0143" rpy="0 0 0" />
+      <mass value="1.0908" />
+      <inertia
+        ixx="0.001146" ixy="0.0" ixz="0.0"
+        iyy="0.100539" iyz="0.0"
+        izz="0.101075" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/link1.STL" />
+      </geometry>
+      <material name="industrial_blue">
+        <color rgba="0.15 0.45 0.85 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ======================== JOINT 2 (Elbow) ======================== -->
+  <!-- Revolute joint at x = L1 = 0.500 m on link1 rotating about Z-axis -->
+  <joint name="joint2" type="revolute">
+    <origin xyz="0.500 0.0 0.032" rpy="0 0 0" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14159265" upper="3.14159265" effort="30.0" velocity="3.14159" />
+    <dynamics damping="0.08" friction="0.03" />
+  </joint>
+
+  <!-- ======================== LINK 2 (Forearm Reach L2 = 0.300 m) ======================== -->
+  <link name="link2">
+    <inertial>
+      <origin xyz="0.0832 0.0 0.0120" rpy="0 0 0" />
+      <mass value="0.3811" />
+      <inertia
+        ixx="0.000255" ixy="0.0" ixz="0.0"
+        iyy="0.006427" iyz="0.0"
+        izz="0.006533" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/link2.STL" />
+      </geometry>
+      <material name="industrial_blue">
+        <color rgba="0.15 0.45 0.85 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ======================== JOINT 3 (Tool / End-Effector) ======================== -->
+  <!-- Fixed tool at x = L2 = 0.300 m on link2 (Inspection probe rigidly fixed) -->
+  <joint name="joint3" type="fixed">
+    <origin xyz="0.300 0.0 0.024" rpy="0 0 0" />
+    <parent link="link2" />
+    <child link="tool_link" />
+  </joint>
+
+  <!-- ======================== TOOL LINK (Inspection Head) ======================== -->
+  <link name="tool_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0135" rpy="0 0 0" />
+      <mass value="0.0732" />
+      <inertia
+        ixx="0.000037" ixy="0.0" ixz="0.0"
+        iyy="0.000037" iyz="0.0"
+        izz="0.000032" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/tool_link.STL" />
+      </geometry>
+      <material name="satin_stainless">
+        <color rgba="0.82 0.82 0.85 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://twoplanar_arm/meshes/tool_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

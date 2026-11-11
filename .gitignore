@@ -1,0 +1,22 @@
+# Python build and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# ROS 2 colcon build artifacts
+install/
+log/
+
+# SolidWorks backup / temp lock files
+~$*.sldprt
+~$*.sldasm
+~$*.slddrw
+*.bak
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
